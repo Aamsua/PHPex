@@ -1,0 +1,14 @@
+2. Exercise 1 - preparing MySQL database and tables.
+
+ CREATE DATABASE testdb;
+
+USE testdb;
+
+ CREATE TABLE patient ( _id int(10) unsigned not null auto_increment , pn varchar(11) default null, first varchar(15) default null, last varchar(25) default null, dob date default null, primary key (_id));
+
+CREATE TABLE insurance (_id int(10) unsigned not null auto_increment, patient_id int(10) unsigned not null, iname varchar(40) default null, from_date date default null, to_date date default null,  primary key (_id), FOREIGN KEY (patient_id) REFERENCES patient(_id));
+
+INSERT INTO patient (_id, pn, first, last, dob) VALUES (1, '000000001', 'Jaan', 'Jalgratas', '1960.04.01'), (2, '000000002',  'Kalle', 'Trepi', '1941.10.11'), (3, '000000003',  'Virve', 'Kihnu', '1966.04.12'), (4, '000000004',  'Palmi', 'Saar', '1959.09.09'), (5, '000000005',  'Mart', 'Laar', '1960.04.22');
+
+INSERT INTO insurance (_id, patient_id, iname, from_date, to_date) VALUES (1, 1, 'United Health', '2015.01.01', '2020.12.31'), (2, 1, 'Kaiser Foundation', '2021.01.01', '2027.12.31'), (3, 2, 'Anthem, Inc.', '2013.01.01', '2017.12.31'), (4, 2, 'Centene Corp', '2018.01.01', '2024.12.31'), (5, 3, 'Humana', '2010.01.01', '2020.12.31'), (6, 3, 'CVS', '2021.01.01', '2022.12.31'), (7, 4, 'HCSC', '2012.01.01', '2016.12.31'), (8, 4, 'Cigna Health', '2017.01.01', '2027.12.31'), (9, 5, 'Molina Healthcare, Inc.', '2011.01.01', '2020.12.31'), (10, 5, 'Independence Health Group', '2021.01.01', '2030.12.31');
+
